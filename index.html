@@ -614,7 +614,7 @@
         </div>
     </div>
 
-    <div class="floating-wa" onclick="window.open('https://wa.me/6281234567890?text=Halo%20STARSWSD%2C%20saya%20butuh%20bantuan%20support.')">
+    <div class="floating-wa" onclick="window.open('https://wa.me/6288269157260?text=Halo%20STARSWSD%2C%20saya%20butuh%20bantuan%20support.')">
         <i class="fab fa-whatsapp"></i>
     </div>
 
@@ -900,7 +900,7 @@
         function orderWA(id) {
             const p = products.find(prod => prod.id === id);
             const text = `Halo STARSWSD, saya ingin memesan: *${p.name}* (${formatIDR(p.price)}).`;
-            window.open(`https://wa.me/${6288269157260}?text=${encodeURIComponent(text)}`);
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`);
         }
 
         function checkoutWA() {
@@ -912,7 +912,7 @@
                 total += p.price;
             });
             const text = `Halo STARSWSD, saya ingin checkout:\n\n${listText}\nTotal: *${formatIDR(total)}*`;
-            window.open(`https://wa.me/6288269157260${waNumber}?text=${encodeURIComponent(text)}`);
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`);
         }
 
         function startTimer(durationInSeconds) {
