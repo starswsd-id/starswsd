@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARS.WSD® Luxury Fashion & Modern Minimalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #ff0000; /* Warna Diskon/Flash Sale */
+            --gray-light: #ffffff;
+            --gray-medium: #888888;
+            --success: #28a745;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .flex { display: flex; align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .text-center { text-align: center; }
+        .section-padding { padding: 60px 0; } /* Sedikit dikurangi untuk mobile-friendly */
+        .badge { padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .badge-red { background: var(--accent); color: rgb(255, 255, 255); }
+        .badge-hot { background: linear-gradient(45deg, #000000, #080808); color: rgb(255, 255, 255); }
+
+        /* --- STICKY HEADER --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .top-bar {
+            background: var(--primary);
+            color: rgb(255, 255, 255);
+            font-size: 10px; /* Ukuran teks promo lebih kecil agar tidak pecah di HP */
+            text-align: center;
+            padding: 8px 10px;
+            letter-spacing: 1px;
+        }
+
+        .main-nav {
+            padding: 10px 0;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 8px; }
+        .logo-img { height: 35px; width: 35px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .brand-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { font-size: 14px; font-weight: 500; transition: var(--transition); opacity: 0.8; }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
+
+        .nav-icons { display: flex; gap: 15px; align-items: center; }
+        .nav-icons i { font-size: 18px; cursSor: pointer; transition: var(--transition); position: relative; }
+        .nav-icons i:hover { color: var(--accent); transform: translateY(-2px); }
+
+        .search-container { position: relative; width: 180px; }
+        .search-container input {
+            width: 100%;
+            padding: 8px 35px 8px 15px;
+            border-radius: 20px;
+             border: 1px solid #ddd;
+            font-size: 13px;
+            outline: none;
+        }
+        .search-container i { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--gray-medium); }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--accent);
+            color: rgb(255, 255, 255);
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .store-status { font-size: 10px; display: flex; align-items: center; gap: 5px; color: var(--success); font-weight: 600; }
+        .dot { width: 6px; height: 6px; background: var(--success); border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url('https://images.unsplash.com/photo-1441997629053-95214b0ef121?auto=format&fit=crop&q=80&w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 10vw, 80px);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p { font-size: clamp(14px, 4vw, 18px); margin-bottom: 25px; letter-spacing: 1px; font-weight: 300; }
+
+        .btn-shop {
+            padding: 12px 30px;
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-shop:hover { background: var(--primary); color: rgb(255, 255, 255); transform: scale(1.05); }
+
+        /* --- FLASH SALE --- */
+        .flash-sale { background: #ffffff; border-bottom: 1px solid #ffe3e3; }
+        .flash-header { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; }
+        .timer { display: flex; gap: 8px; font-weight: 700; font-size: 16px; }
+        .timer-box { background: var(--accent); color: white; padding: 4px 8px; border-radius: 5px; min-width: 38px; text-align: center; }
+
+        /* --- PRODUCT GRID --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-img-container {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-labels { position: absolute; top: 8px; left: 8px; display: flex; flex-direction: column; gap: 4px; z-index: 5; }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgb(255, 255, 255);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .product-info { padding: 12px; flex-grow: 1; }
+        .product-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; height: 38px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .product-rating { color: #ffcc00; font-size: 10px; margin-bottom: 4px; }
+        .product-sold { font-size: 10px; color: var(--gray-medium); margin-left: 3px; }
+        
+        .price-container { margin-top: 5px; }
+        .price-discount { color: var(--accent); font-weight: 700; font-size: 15px; display: block; }
+        .price-original { text-decoration: line-through; color: var(--gray-medium); font-size: 11px; }
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 0 12px 12px 12px;
+        }
+
+        .btn-action {
+            padding: 10px 5px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #ddd;S
+        }
+
+        .btn-cart { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-wa { background: #25d366; color: white; border-color: #25d366; }
+
+        /* --- MODAL --- */
+        .modal {
+           position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: row;
+            overflow-y: auto;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-close { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; z-index: 100; background: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+
+ /* --- CART POPUP --- */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1500;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active { right: 0; }
+        .cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 15px; }
+        .cart-item { display: flex; gap: 12px; margin-bottom: 15px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px; }
+        .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; }
+        .cart-footer { padding: 20px; border-top: 1px solid #eee; background: #fff; }
+
+        /* --- SOCIAL PROOF --- */
+        #social-proof {
+            position: fixed;
+            bottom: 90px; /* Dinaikkan agar tidak tertutup tombol WA */
+            left: 15px;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 998;
+            transform: translateY(200%);
+            transition: 0.5s;
+            max-width: 280px;
+        }
+        #social-proof.show { transform: translateY(0); }
+        .proof-img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .proof-text { font-size: 10px; line-height: 1.3; }
+
+        /* --- TESTIMONI --- */
+        .testimonial-slider { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .testimonial-slider::-webkit-scrollbar { display: none; }
+        .testimonial-card {
+            min-width: 260px;
+            background: #fdfdfd;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            scroll-snap-align: start;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: #000000; color: white; padding: 50px 0 20px 0; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 15px; }
+        .footer-links h4 { margin-bottom: 15px; font-size: 14px; text-transform: uppercase; }
+        .footer-links li { margin-bottom: 8px; opacity: 0.6; font-size: 13px; cursor: pointer; }
+        .footer-links li:hover { opacity: 1; }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons i { font-size: 18px; cursor: pointer; }
+
+        /* --- FLOATING WA --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        /* --- MOBILE RESPONSIVE ADAPTATION --- */
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 40px 0; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .main-nav { grid-template-columns: auto 1fr; }
+            .nav-links, .search-container, .store-status { display: none; }
+            .logo-img { height: 32px; width: 32px; }
+            .brand-name { font-size: 18px; }
+            .cart-sidebar { width: 100%; right: -100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 25px; text-align: center; }
+            .social-icons { justify-content: center; }
+            
+            /* Modal Mobile */
+            .modal-content { flex-direction: column; width: 100%; }
+            .modal-content > div { width: 100% !important; }
+            .modal-content img { aspect-ratio: 1/1; }
+            .modal-content div[style*="padding: 40px"] { padding: 20px !important; }
+            .modal-content h2 { font-size: 20px; }
+            
+            .btn-action { padding: 12px 5px; font-size: 10px; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        GRATIS ONGKIR SELURUH INDONESIA DENGAN MINIMAL ORDER 500.000 RB
+    </div>
+
+    <header>
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo-area">
+                    <img src="559880124_18057729671406792_7346520460205699203_n.jpg" alt="Logo" class="logo-img">
+                    <span class="brand-name">STARS.WSD® </span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="#terlaris">Terlaris 🔥</a></li>
+                    <li><a href="#flash-sale">Flash Sale</a></li>
+                    <li><a href="#about">Tentang Brand</a></li>
+                </ul>
+
+                <div class="nav-icons" style="justify-content: flex-end;">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="filterProducts()">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="store-status">
+                        <span class="dot"></span> Online
+                    </div>
+                    <i class="far fa-heart" onclick="toggleWishlistPage()"></i>
+                    <i class="fas fa-shopping-bag" onclick="toggleCart()">
+                        <span class="cart-count" id="cart-count">0</span>
+                    </i>
+                    <i class="far fa-user"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero animate__animated animate__fadeIn" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__slideInUp">STARS.WSD®</h1>
+            <p class="animate__animated animate__slideInUp" style="animation-delay: 0.3s;">THE PINNACLE OF LUXURY FASHION</p>
+            <button class="btn-shop animate__animated animate__slideInUp" style="animation-delay: 0.6s;" onclick="document.getElementById('produk').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+        </div>
+    </section>
+
+    <section class="flash-sale section-padding" id="flash-sale">
+        <div class="container">
+            <div class="flash-header">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(20px, 5vw, 28px);">⚡ Flash Sale</h2>
+                <div class="timer" id="timer">
+                    <div class="timer-box" id="hours">00</div> :
+                    <div class="timer-box" id="minutes">00</div> :
+                    <div class="timer-box" id="seconds">00</div>
+                </div>
+            </div>
+            
+            <div class="product-grid" id="flash-sale-grid">
+                </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="produk">
+        <div class="container">
+            <div class="flex justify-between" style="margin-bottom: 30px; align-items: flex-end;">
+                <div>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 5vw, 32px);">Koleksi Premium</h2>
+                    <p style="color: var(--gray-medium); font-size: 13px;">Didesain khusus untuk Anda.</p>
+                </div>
+                <div style="font-weight: 600; cursor: pointer; border-bottom: 2px solid black; font-size: 13px;">Lihat Semua</div>
+            </div>
+
+            <div class="product-grid" id="main-product-grid">
+                </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="about" style="background: #fafafa;">
+        <div class="container text-center" style="max-width: 800px;">
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 15px; font-size: clamp(22px, 5vw, 30px);">Filosofi STARS.WSD®</h2>
+            <p style="font-size: clamp(14px, 4vw, 16px); color: #555; line-height: 1.6;">
+                STARS.WSD® adalah brand fashion modern yang menggabungkan desain elegan, kualitas premium, dan gaya eksklusif. Kami percaya bahwa setiap pakaian adalah representasi identitas diri.
+            </p>
+            <div style="margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div>
+                    <h4 style="font-size: clamp(18px, 4vw, 24px);">10k+</h4>
+                    <p style="font-size: 10px; color: var(--gray-medium);">Pelanggan</p>
+                </div>
+                <div>
+                    <h4 style="font-size: clamp(18px, 4vw, 24px);">500+</h4>
+                    <p style="font-size: 10px; color: var(--gray-medium);">Koleksi</p>
+                </div>
+                <div>
+                    <h4 style="font-size: clamp(18px, 4vw, 24px);">24/7</h4>
+                    <p style="font-size: 10px; color: var(--gray-medium);">Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center" style="font-family: 'Playfair Display', serif; margin-bottom: 30px; font-size: clamp(22px, 5vw, 30px);">Ulasan Pelanggan</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 13px;">"Kualitas bahannya benar-benar premium, jahitan sangat rapi. Sangat worth it!"</p>
+                    <h5 style="margin-top: 10px; font-size: 14px;">— Andi S.</h5>
+                </div>
+                <div class="testimonial-card">
+                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 13px;">"Pengiriman cepat dan packingnya sangat mewah. Serasa unboxing jam tangan mahal."</p>
+                    <h5 style="margin-top: 10px; font-size: 14px;">— Rina M.</h5>
+                </div>
+                <div class="testimonial-card">
+                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 13px;">"Sudah langganan di STARSWSD, desainnya selalu up to date dan minimalis."</p>
+                    <h5 style="margin-top: 10px; font-size: 14px;">— Budi H.</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">STARS.WSD®</div>
+                    <p style="opacity: 0.6; font-size: 13px; margin-bottom: 20px;">
+                        The Future of Minimalist Fashion. High quality, sustainably sourced, and designed for you.
+                    </p>
+                    <div class="social-icons">
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-tiktok"></i>
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Bantuan</h4>
+                    <ul>
+                        <li>Cara Order</li>
+                        <li>Kebijakan Pengiriman</li>
+                        <li>Pengembalian Barang</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li>Tentang Kami</li>
+                        <li>Kontak Kami</li>
+                        <li>Syarat & Ketentuan</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Toko Kami</h4>
+                    <p style="opacity: 0.6; font-size: 12px;">
+                        Senin - Sabtu (09:00 - 21:00 WIB)<br>
+                        Bandung Java, Indonesia.
+                    </p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #222; padding-top: 20px; text-align: center; opacity: 0.4; font-size: 11px;">
+                &copy; 2026 STARS.WSD® LUXURY FASHION. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 style="font-size: 18px;">Keranjang Belanja</h3>
+            <i class="fas fa-times" style="cursor: pointer; font-size: 20px;" onclick="toggleCart()"></i>
+        </div>
+        <div class="cart-items" id="cartItemsList">
+            <p class="text-center" style="margin-top: 50px; color: #888; font-size: 14px;">Keranjang Anda kosong.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="flex justify-between" style="margin-bottom: 15px; font-weight: 700;">
+                <span>Total:</span>
+                <span id="cartTotal">Rp 0</span>
+            </div>
+            <button class="btn-shop" style="width: 100%;" onclick="checkoutWA()">ORDER VIA WA</button>
+        </div>
+    </div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div style="width: 50%;">
+                <img id="modalImg" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="width: 50%; padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+                <h2 id="modalName" style="font-family: 'Playfair Display', serif; margin-bottom: 10px;"></h2>
+                <div class="product-rating" id="modalRating"></div>
+                <div class="price-container" style="margin: 15px 0;">
+                    <span id="modalPrice" class="price-discount" style="font-size: 22px;"></span>
+                    <span id="modalPriceOriginal" class="price-original" style="font-size: 14px;"></span>
+                </div>
+                <p id="modalDesc" style="color: #666; margin-bottom: 25px; font-size: 14px;">
+                    Produk premium edisi terbatas dari koleksi STARS.WSD®. Dibuat dengan material berkualitas tinggi.
+                </p>
+                <button class="btn-shop" style="width: 100%; margin-bottom: 10px;" id="modalAddToCartBtn">Tambah ke Keranjang</button>
+                <button class="btn-action btn-wa" style="width: 100%; padding: 15px;" id="modalWABtn">Order via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="social-proof">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" class="proof-img" alt="User">
+        <div class="proof-text">
+            <strong id="proof-name">Andi</strong> dari <span id="proof-city">Jakarta</span><br>
+            baru saja membeli <span id="proof-product">Premium Hoodie</span>
+        </div>
+    </div>
+
+    <div class="floating-wa" onclick="window.open('https://wa.me/6281234567890?text=Halo%20STARSWSD%2C%20saya%20butuh%20bantuan%20support.')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Premium Signature Hoodie Black",
+                price: 499000,
+                originalPrice: 799000,
+                img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600",
+                sold: "1.2k",
+                rating: 5,
+                flashSale: true,
+                isHot: true,
+                desc: "Hoodie minimalis dengan bahan cotton fleece 330gsm yang sangat tebal namun tetap adem."
+            },
+            {
+                id: 2,
+                name: "STARSWSD Oversized Tee White",
+                price: 249000,
+                originalPrice: 350000,
+                img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=600",
+                sold: "2.5k",
+                rating: 5,
+                flashSale: true,
+                isHot: false,
+                desc: "Kaos oversized dengan cuttingan premium drop shoulder."
+            },
+            {
+                id: 3,
+                name: "Classic Chino Pants Sand",
+                price: 399000,
+                originalPrice: 599000,
+                img: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&q=80&w=600",
+                sold: "850",
+                rating: 4,
+                flashSale: false,
+                isHot: true,
+                desc: "Celana chino slim fit dengan bahan stretch yang nyaman untuk mobilitas tinggi."
+            },
+            {
+                id: 4,
+                name: "Luxury Bomber Jacket",
+                price: 899000,
+                originalPrice: 1299000,
+                img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=600",
+                sold: "430",
+                rating: 5,
+                flashSale: false,
+                isHot: true,
+                desc: "Jaket bomber eksklusif dengan lapisan dalam satin premium."
+            },
+            {
+                id: 5,
+                name: "Linen Shirt Minimalist Blue",
+                price: 320000,
+                originalPrice: 450000,
+                img: "https://images.unsplash.com/photo-1596755094514-f87034a26cc1?auto=format&fit=crop&q=80&w=600",
+                sold: "670",
+                rating: 5,
+                flashSale: false,
+                isHot: false,
+                desc: "Kemeja linen breathable, cocok untuk cuaca tropis namun tetap terlihat formal."
+            },
+            {
+                id: 6,
+                name: "Urban Cargo Pants Black",
+                price: 450000,
+                originalPrice: 600000,
+                img: "https://images.unsplash.com/photo-1517438476312-10d79c67750d?auto=format&fit=crop&q=80&w=600",
+                sold: "10RB",
+                rating: 4,
+                flashSale: true,
+                isHot: false,
+                desc: "Cargo pants dengan banyak saku fungsional namun desain tetap ramping."
+            },
+            {
+                id: 7,
+                name: "Essential Polo Shirt Navy",
+                price: 275000,
+                originalPrice: 350000,
+                img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600",
+                sold: "1.5k",
+                rating: 5,
+                flashSale: false,
+                isHot: true,
+                desc: "Polo shirt dengan bahan piqué cotton 100% berkualitas tinggi."
+            },
+            {
+                id: 8,
+                name: "Modern Parka Raincoat",
+                price: 1100000,
+                originalPrice: 1500000,
+                img: "https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&q=80&w=600",
+                sold: "210",
+                rating: 5,
+                flashSale: false,
+                isHot: false,
+                desc: "Parka tahan air dengan desain futuristik yang elegan."
+            }
+        ];
+
+        let cart = [];
+        let wishlist = [];
+        const waNumber = "6281234567890"; 
+
+        function renderProducts(filter = "") {
+            const mainGrid = document.getElementById('main-product-grid');
+            const flashGrid = document.getElementById('flash-sale-grid');
+            mainGrid.innerHTML = "";
+            flashGrid.innerHTML = "";
+
+            products.forEach(p => {
+                if (filter && !p.name.toLowerCase().includes(filter.toLowerCase())) return;
+
+                const card = `
+                    <div class="product-card animate__animated animate__fadeIn">
+                        <div class="product-img-container" onclick="openProductDetail(${p.id})">
+                            <div class="product-labels">
+                                ${p.isHot ? '<span class="badge badge-hot">🔥 Hot</span>' : ''}
+                                ${p.flashSale ? '<span class="badge badge-red">Flash</span>' : ''}
+                            </div>
+                            <div class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(${p.id})">
+                                <i class="${wishlist.includes(p.id) ? 'fas' : 'far'} fa-heart" style="color: ${wishlist.includes(p.id) ? 'red' : 'black'}"></i>
+                            </div>
+                            <img src="${p.img}" alt="${p.name}">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-rating">
+                                ${'⭐'.repeat(p.rating)}
+                                <span class="product-sold">${p.sold} sold</span>
+                            </div>
+                            <h3 class="product-name">${p.name}</h3>
+                            <div class="price-container">
+                                <span class="price-discount">${formatIDR(p.price)}</span>
+                                <span class="price-original">${formatIDR(p.originalPrice)}</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action btn-cart" onclick="addToCart(${p.id})"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="btn-action btn-wa" onclick="orderWA(${p.id})"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                `;
+
+                if (p.flashSale) flashGrid.innerHTML += card;
+                mainGrid.innerHTML += card;
+            });
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value;
+            renderProducts(query);
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            const btn = event.target.closest('button');
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = "✓";
+            setTimeout(() => btn.innerHTML = originalIcon, 1000);
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const count = document.getElementById('cart-count');
+            const total = document.getElementById('cartTotal');
+            count.innerText = cart.length;
+            if (cart.length === 0) {
+                list.innerHTML = '<p class="text-center" style="margin-top: 50px; color: #888;">Kosong.</p>';
+                total.innerText = "Rp 0";
+                return;
+            }
+            let html = "";
+            let totalPrice = 0;
+            cart.forEach((item, index) => {
+                totalPrice += item.price;
+                html += `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="">
+                        <div style="flex:1">
+                            <div style="font-weight:600; font-size:13px;">${item.name}</div>
+                            <div style="color:var(--accent); font-weight:700; font-size:14px;">${formatIDR(item.price)}</div>
+                        </div>
+                        <i class="fas fa-trash" style="cursor:pointer; color:#eee" onclick="removeFromCart(${index})"></i>
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+            total.innerText = formatIDR(totalPrice);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        function toggleWishlist(id) {
+            if (wishlist.includes(id)) {
+                wishlist = wishlist.filter(item => item !== id);
+            } else {
+                wishlist.push(id);
+            }
+            renderProducts();
+        }
+
+        function openProductDetail(id) {
+            const p = products.find(prod => prod.id === id);
+            document.getElementById('modalImg').src = p.img;
+            document.getElementById('modalName').innerText = p.name;
+            document.getElementById('modalPrice').innerText = formatIDR(p.price);
+            document.getElementById('modalPriceOriginal').innerText = formatIDR(p.originalPrice);
+            document.getElementById('modalRating').innerHTML = '⭐'.repeat(p.rating);
+            document.getElementById('modalDesc').innerText = p.desc;
+            document.getElementById('modalAddToCartBtn').onclick = () => addToCart(p.id);
+            document.getElementById('modalWABtn').onclick = () => orderWA(p.id);
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function formatIDR(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount).replace("Rp", "Rp ");
+        }
+
+        function orderWA(id) {
+            const p = products.find(prod => prod.id === id);
+            const text = `Halo STARSWSD, saya ingin memesan: *${p.name}* (${formatIDR(p.price)}).`;
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`);
+        }
+
+        function checkoutWA() {
+            if (cart.length === 0) return;
+            let listText = "";
+            let total = 0;
+            cart.forEach((p, i) => {
+                listText += `${i+1}. ${p.name}\n`;
+                total += p.price;
+            });
+            const text = `Halo STARSWSD, saya ingin checkout:\n\n${listText}\nTotal: *${formatIDR(total)}*`;
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`);
+        }
+
+        function startTimer(durationInSeconds) {
+            let timer = durationInSeconds;
+            setInterval(function () {
+                let hours = parseInt(timer / 3600, 10);
+                let minutes = parseInt((timer % 3600) / 60, 10);
+                let seconds = parseInt(timer % 60, 10);
+                document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
+                document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
+                if (--timer < 0) timer = durationInSeconds;
+            }, 1000);
+        }
+
+        function showSocialProof() {
+            const popup = document.getElementById('social-proof');
+            const names = ["Siti", "Andi", "Rina", "Budi", "Maya"];
+            const cities = ["Jakarta", "Bandung", "Surabaya"];
+            const randName = names[Math.floor(Math.random() * names.length)];
+            const randCity = cities[Math.floor(Math.random() * cities.length)];
+            const randProd = products[Math.floor(Math.random() * products.length)];
+            document.getElementById('proof-name').innerText = randName;
+            document.getElementById('proof-city').innerText = randCity;
+            document.getElementById('proof-product').innerText = randProd.name;
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 4000);
+        }
+
+        window.onload = () => {
+            renderProducts();
+            startTimer(7950);
+            setInterval(showSocialProof, 12000);
+            window.onclick = (e) => {
+                if (e.target == document.getElementById('productModal')) closeModal();
+            }
+        };
+    </script>
+</body>
+</html>
+
+
